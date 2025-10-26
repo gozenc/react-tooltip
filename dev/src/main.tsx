@@ -1,56 +1,67 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./style.css";
-import DarkModeToggle from "../../src";
+import { Tooltip } from "../../src";
 
 export function App() {
   return (
     <div className="container">
-      <h1>React Dark Mode Toggle</h1>
-      <p>A beautiful, animated dark mode toggle component</p>
+      <h1>@gozenc/react-tooltip</h1>
+      <p>A super-lightweight, dependency-free React tooltip component</p>
 
       <div className="demo-section">
-        <h2>Default Toggle</h2>
-        <div className="toggle-row">
-          <span>Light</span>
-          <DarkModeToggle />
-          <span>Dark</span>
+        <h2>Default Tooltip</h2>
+        <div className="tooltip-row">
+          <Tooltip content="This is a tooltip!">
+            <button>Hover me</button>
+          </Tooltip>
         </div>
       </div>
 
       <div className="demo-section">
-        <h2>Custom Sizes</h2>
-        <div className="toggle-row">
-          <DarkModeToggle size={16} />
-          <DarkModeToggle size={24} />
-          <DarkModeToggle size={32} />
-          <DarkModeToggle size={48} />
+        <h2>Different Positions</h2>
+        <div className="tooltip-row">
+          <Tooltip content="Top tooltip" position="top">
+            <button>Top</button>
+          </Tooltip>
+          <Tooltip content="Right tooltip" position="right">
+            <button>Right</button>
+          </Tooltip>
+          <Tooltip content="Bottom tooltip" position="bottom">
+            <button>Bottom</button>
+          </Tooltip>
+          <Tooltip content="Left tooltip" position="left">
+            <button>Left</button>
+          </Tooltip>
         </div>
       </div>
 
       <div className="demo-section">
-        <h2>Custom Colors</h2>
-        <div className="toggle-row">
-          <DarkModeToggle
-            colors={{
-              backgroundColor: "#e3f2fd",
-              backgroundColorDark: "#1565c0",
-              color: "#1976d2",
-              colorHover: "#63a4ffff",
-              colorDark: "#bbdefb",
-              colorHoverDark: "#90caf9ff",
-            }}
-          />
-          <DarkModeToggle
-            colors={{
-              backgroundColor: "#f3e5f5",
-              backgroundColorDark: "#7b1fa2",
-              color: "#9c27b0",
-              colorHover: "#b863ddff",
-              colorDark: "#e1bee7",
-              colorHoverDark: "#b689beff",
-            }}
-          />
+        <h2>Custom Offset & Delay</h2>
+        <div className="tooltip-row">
+          <Tooltip content="Offset 4px" offset={4}>
+            <button>Small offset</button>
+          </Tooltip>
+          <Tooltip content="Offset 16px" offset={16}>
+            <button>Large offset</button>
+          </Tooltip>
+          <Tooltip content="No delay" delay={0}>
+            <button>Instant</button>
+          </Tooltip>
+          <Tooltip content="500ms delay" delay={500}>
+            <button>Slow</button>
+          </Tooltip>
+        </div>
+      </div>
+
+      <div className="demo-section">
+        <h2>Multiple Tooltips</h2>
+        <div className="tooltip-grid">
+          {Array.from({ length: 20 }, (_, i) => (
+            <Tooltip key={i} content={`Tooltip #${i + 1}`}>
+              <button>Item {i + 1}</button>
+            </Tooltip>
+          ))}
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+import { createElement, useState, useRef, useEffect, useCallback } from "react";
 
 export type TooltipProps = {
   content: string;
@@ -93,23 +93,25 @@ export function Tooltip(props: React.PropsWithChildren<TooltipProps>) {
   const tooltipClasses = `gttc ${isVisible ? "gttv" : ""}`;
   const arrowClasses = `gtta gtta${tooltipPosition[0]}`;
 
-  return (
-    <span
-      ref={wrapperRef}
-      className={`gttw ${className}`}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      {children}
-      <div
-        ref={tooltipRef}
-        className={tooltipClasses}
-        style={{ top: `${coords.top}px`, left: `${coords.left}px` }}
-      >
-        {content}
-        <div className={arrowClasses} />
-      </div>
-    </span>
+  return createElement(
+    "span",
+    {
+      ref: wrapperRef,
+      className: `gttw ${className}`,
+      onMouseEnter: handleMouseEnter,
+      onMouseLeave: handleMouseLeave,
+    },
+    children,
+    createElement(
+      "div",
+      {
+        ref: tooltipRef,
+        className: tooltipClasses,
+        style: { top: `${coords.top}px`, left: `${coords.left}px` },
+      },
+      content,
+      createElement("div", { className: arrowClasses })
+    )
   );
 }
 

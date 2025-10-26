@@ -20,7 +20,7 @@
     "declaration": true,
     "declarationMap": true,
     "outDir": "./dist",
-    "jsx": "react-jsx",
+    "jsx": "react",
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
