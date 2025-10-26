@@ -1,0 +1,104 @@
+.rdmt {
+  --rdmt-size: 24px;
+  --rdmt-padding: calc(var(--rdmt-size) / 4);
+  --rdmt-bg-light: #f3f4f6;
+  --rdmt-bg-dark: #3e3e42;
+  --rdmt-radius: 100%;
+  --rdmt-color-light: #9aa0a6;
+  --rdmt-color-dark: #d5d5d5ff;
+  --rdmt-color-hover-light: #000000;
+  --rdmt-color-hover-dark: #ffffff;
+  --rdmt-ease-in: cubic-bezier(0.25, 0, 0.3, 1);
+  --rdmt-ease-elastic-1: cubic-bezier(0.5, 1.25, 0.75, 1.25);
+  --rdmt-ease-elastic-2: cubic-bezier(0.5, 1.5, 0.75, 1.25);
+  --rdmt-ease-out: cubic-bezier(0, 0, 0, 1);
+  --rdmt-icon-fill: var(--rdmt-color-light);
+  --rdmt-icon-fill-hover: var(--rdmt-color-hover-light);
+  display: inline-flex;
+  justify-content: center;
+  padding: var(--rdmt-padding);
+  border-radius: var(--rdmt-radius);
+  cursor: pointer;
+  align-items: center;
+  background-color: var(--rdmt-bg-light);
+}
+.dark .rdmt {
+  background-color: var(--rdmt-bg-dark);
+}
+.rdmtt {
+  background: none;
+  border: none;
+  padding: 0;
+  inline-size: var(--rdmt-size);
+  block-size: var(--rdmt-size);
+  aspect-ratio: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  outline-offset: 5px;
+}
+.rdmtt > svg {
+  inline-size: 100%;
+  block-size: 100%;
+  stroke-linecap: round;
+}
+.dark .rdmtt {
+  --rdmt-icon-fill: var(--rdmt-color-dark);
+  --rdmt-icon-fill-hover: var(--rdmt-color-hover-dark);
+}
+.rdmts {
+  transition: transform 0.5s var(--rdmt-ease-elastic-1);
+}
+.rdmtsm > :is(.rdmtm, .rdmts, .rdmtb) {
+  transform-origin: center center;
+}
+.rdmtsm > :is(.rdmtm, .rdmts) {
+  fill: var(--rdmt-icon-fill);
+}
+.rdmtt:is(:hover, :focus-visible) > .rdmtsm > :is(.rdmtm, .rdmts) {
+  fill: var(--rdmt-icon-fill-hover);
+}
+.rdmtsm > .rdmtb {
+  stroke: var(--rdmt-icon-fill);
+  stroke-width: 2px;
+  transition: transform 0.5s var(--rdmt-ease-elastic-2),
+    opacity 0.5s var(--rdmt-ease-in);
+}
+.rdmtt:is(:hover, :focus-visible) .rdmtsm > .rdmtb {
+  stroke: var(--rdmt-icon-fill-hover);
+}
+.rdmtsm .rdmtm > circle {
+  transform: translateX(-7px);
+  transition: transform 0.25s var(--rdmt-ease-out);
+}
+@supports (cx: 1) {
+  .rdmtsm .rdmtm > circle {
+    transform: translateX(0);
+    transition: cx 0.25s var(--rdmt-ease-out);
+  }
+}
+.dark .rdmtsm > .rdmts {
+  transform: scale(1.5);
+  transition-timing-function: var(--rdmt-ease-in);
+  transition-duration: 0.25s;
+}
+.dark .rdmtsm > .rdmtb {
+  opacity: 0;
+  transform: rotateZ(-25deg);
+  transition-duration: 0.15s;
+}
+.dark .rdmtsm > .rdmtm > circle {
+  transform: translateX(-7px);
+  transition: transform 0.25s var(--rdmt-ease-out);
+  transition-delay: 0.15s;
+  transition-duration: 0.25s;
+}
+@supports (cx: 1) {
+  .dark .rdmtsm > .rdmtm > circle {
+    transform: translateX(0);
+    cx: 17;
+    transition: cx 0.25s var(--rdmt-ease-out);
+    transition-delay: 0.15s;
+    transition-duration: 0.25s;
+  }
+}
