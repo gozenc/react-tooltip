@@ -6,6 +6,9 @@ dev/node_modules/
 dist/
 dev/dist/
 
+# Docs folder (generated from docs.html)
+docs/
+
 # TypeScript
 *.tsbuildinfo
 
@@ -80,7 +83,6 @@ coverage/
 # Nuxt.js build / generate output
 .nuxt
 dist
-!docs/dist
 
 # Storybook build outputs
 .out

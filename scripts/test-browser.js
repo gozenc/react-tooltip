@@ -30,7 +30,7 @@ const mimeTypes = {
 
 const server = createServer(async (req, res) => {
   try {
-    let filePath = req.url === "/" ? "/html/test-dist.html" : req.url;
+    let filePath = req.url === "/" ? "/docs/index.html" : req.url;
     filePath = join(__dirname, "..", filePath);
 
     const stats = await stat(filePath);
