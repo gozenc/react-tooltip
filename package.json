@@ -24,13 +24,12 @@
     "dev": "cd dev && vite",
     "build": "tsc && vite build",
     "build:dev": "cd dev && vite build",
-    "docs": "node scripts/sync-docs.js",
     "lint": "eslint src --ext ts,tsx",
-    "test": "node scripts/test-package.js",
-    "test:local": "node scripts/test-local.js",
-    "test:browser": "node scripts/test-browser.js",
-    "bump": "node scripts/bump-version.js",
-    "release": "npm run build && npm run docs && npm run bump && npm publish"
+    "docs": "packer docs",
+    "verify": "packer verify",
+    "preview": "packer preview",
+    "bump": "packer bump",
+    "release": "npm run build && packer docs && packer bump && npm publish"
   },
   "keywords": [
     "react",
@@ -61,6 +60,7 @@
     "@rollup/plugin-terser": "^0.4.4",
     "@types/node": "^24.6.0",
     "@types/react": "^19.1.16",
+    "@gozenc/packer": "1.0.0",
     "@types/react-dom": "^19.1.9",
     "@vitejs/plugin-react-swc": "^4.2.0",
     "eslint": "^9.36.0",
