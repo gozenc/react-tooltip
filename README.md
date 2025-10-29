@@ -1,13 +1,16 @@
 # @gozenc/react-tooltip
 
 A super-lightweight, dependency-free React tooltip component optimized for high-performance applications with hundreds of tooltips.
+You can visit https://react-tooltip.pages.dev/ for the documentation and examples.
+
+![Preview](https://react-dark-mode-toggle.pages.dev/demo.jpg)
 
 ## Features
 
 - ✅ **Zero Dependencies** - Only requires React
 - ✅ **No External CSS** - Styles injected via singleton pattern
 - ✅ **Highly Optimized** - Designed for 500+ tooltips on a single page
-- ✅ **Minified Bundle** - ~650 bytes of CSS, minified class names
+- ✅ **Minified Bundle** - ~400 bytes of CSS, minified class names
 - ✅ **TypeScript Support** - Fully typed with TypeScript
 - ✅ **Customizable** - Flexible props for positioning, timing, and styling
 - ✅ **Production Ready** - Battle-tested performance optimizations
@@ -92,14 +95,7 @@ The component uses a singleton pattern to inject CSS styles only once, regardles
 - Styles are injected when the module loads
 - Zero overhead for additional tooltip instances
 
-### 2. Extracted Functions
-
-All helper functions are defined outside the component body to prevent recreation on every render:
-
-- `calculateTooltipPosition()` - Pure function for position calculations
-- `injectTooltipStyles()` - Singleton style injection
-
-### 3. Memoized Event Handlers
+### 2. Memoized Event Handlers
 
 Event handlers are wrapped with `useCallback` to maintain stable references:
 
@@ -107,22 +103,7 @@ Event handlers are wrapped with `useCallback` to maintain stable references:
 - `handleMouseLeave` - Memoized with no dependencies
 - `calculatePosition` - Memoized with `position` and `offset` dependencies
 
-### 4. Minified Class Names
-
-CSS class names are minified to reduce bundle size:
-
-| Original                | Minified | Description               |
-| ----------------------- | -------- | ------------------------- |
-| `.tooltip-wrapper`      | `.gttw`  | Wrapper element           |
-| `.tooltip-content`      | `.gttc`  | Tooltip content container |
-| `.tooltip-visible`      | `.gttv`  | Visible state modifier    |
-| `.tooltip-arrow`        | `.gtta`  | Arrow base styles         |
-| `.tooltip-arrow-top`    | `.gttat` | Arrow for top position    |
-| `.tooltip-arrow-bottom` | `.gttab` | Arrow for bottom position |
-| `.tooltip-arrow-left`   | `.gttal` | Arrow for left position   |
-| `.tooltip-arrow-right`  | `.gttar` | Arrow for right position  |
-
-### 5. Minified CSS
+### 3. Minified CSS
 
 The CSS is fully minified with:
 
@@ -132,25 +113,6 @@ The CSS is fully minified with:
 - **Result**: ~650 bytes (46% reduction from original)
 
 ## Technical Implementation
-
-### Style Injection
-
-```typescript
-const STYLE_ID = "gtt-styles";
-
-function injectTooltipStyles() {
-  if (typeof document === "undefined") return; // SSR-safe
-  if (document.getElementById(STYLE_ID)) return; // Already injected
-
-  const styleElement = document.createElement("style");
-  styleElement.id = STYLE_ID;
-  styleElement.textContent = TOOLTIP_STYLES;
-  document.head.appendChild(styleElement);
-}
-
-// Inject immediately when module loads
-injectTooltipStyles();
-```
 
 ### Position Calculation
 
@@ -181,15 +143,14 @@ Arrows are positioned using CSS transforms and dynamically generated class names
 
 ## Bundle Size
 
-- Component code: ~2KB (minified)
-- CSS styles: ~650 bytes (minified)
-- **Total**: ~2.7KB (minified, not gzipped)
+- 2.5KB (minified)
+- 1.08KB (gzipped)
 
 ## Development Notes
 
 ### Why "GTT"?
 
-GTT stands for "Global Tooltip" - emphasizing the singleton style injection pattern that makes this component efficient for global use across large applications.
+GTT stands for "Gozenc Tooltip" - emphasizing the singleton style injection pattern that makes this component efficient for global use across large applications.
 
 ### Design Decisions
 
