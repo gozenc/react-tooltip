@@ -1,6 +1,6 @@
 {
   "name": "@gozenc/react-tooltip",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple lighweight tooltip component for React.",
   "type": "module",
   "main": "./dist/index.js",
@@ -33,10 +33,15 @@
   },
   "keywords": [
     "react",
-    "dark-mode",
-    "toggle",
-    "theme",
+    "tooltip",
     "component",
+    "lighweight",
+    "alttext",
+    "infobox",
+    "infobubble",
+    "info",
+    "hovertip",
+    "speech bubble",
     "ui",
     "no-dependencies",
     "animation"
