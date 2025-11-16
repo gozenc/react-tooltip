@@ -2,10 +2,20 @@ import { createElement, useState, useRef, useEffect, useCallback } from "react";
 
 export type TooltipProps = {
   content: string;
-  position?: "top" | "right" | "bottom" | "left";
+  position?:
+    | "top"
+    | "right"
+    | "bottom"
+    | "left"
+    | "top-left"
+    | "top-right"
+    | "bottom-left"
+    | "bottom-right";
   className?: string;
   offset?: number;
   delay?: number;
+  variant?: "dark" | "light";
+  size?: "xs" | "sm" | "md" | "lg";
 };
 
 /**
@@ -119,7 +129,7 @@ export function Tooltip(props: React.PropsWithChildren<TooltipProps>) {
 function calculateTooltipPosition(
   wrapperRect: DOMRect,
   tooltipRect: DOMRect,
-  position: "top" | "right" | "bottom" | "left",
+  position: TooltipProps["position"],
   offset: number
 ): { top: number; left: number } {
   let top = 0;

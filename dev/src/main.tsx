@@ -21,14 +21,26 @@ export function App() {
       <div className="demo-section">
         <h2>Different Positions</h2>
         <div className="tooltip-row">
-          <Tooltip content="Top tooltip" position="top">
+          <Tooltip content="Top Left tooltip" position="top-left">
+            <button>Top left</button>
+          </Tooltip>
+          <Tooltip content="Top very very long tooltip" position="top">
             <button>Top</button>
+          </Tooltip>
+          <Tooltip content="Top Right tooltip" position="top-right">
+            <button>Top Right</button>
           </Tooltip>
           <Tooltip content="Right tooltip" position="right">
             <button>Right</button>
           </Tooltip>
+          <Tooltip content="Bottom Right tooltip" position="bottom-right">
+            <button>Bottom Right</button>
+          </Tooltip>
           <Tooltip content="Bottom tooltip" position="bottom">
             <button>Bottom</button>
+          </Tooltip>
+          <Tooltip content="Bottom Left tooltip" position="bottom-left">
+            <button>Bottom Left</button>
           </Tooltip>
           <Tooltip content="Left tooltip" position="left">
             <button>Left</button>
@@ -50,6 +62,66 @@ export function App() {
           </Tooltip>
           <Tooltip content="500ms delay" delay={500}>
             <button>Slow</button>
+          </Tooltip>
+        </div>
+      </div>
+
+      <div className="demo-section">
+        <h2>Variants</h2>
+        <div className="tooltip-row">
+          <Tooltip content="Dark variant (default)" variant="dark">
+            <button>Dark</button>
+          </Tooltip>
+          <Tooltip content="Light variant" variant="light">
+            <button>Light</button>
+          </Tooltip>
+          <Tooltip content="Light top-left" variant="light" position="top-left">
+            <button>Light top-left</button>
+          </Tooltip>
+          <Tooltip
+            content="Light bottom-right"
+            variant="light"
+            position="bottom-right"
+          >
+            <button>Light bottom-right</button>
+          </Tooltip>
+        </div>
+      </div>
+
+      <div className="demo-section">
+        <h2>Sizes</h2>
+        <div className="tooltip-row">
+          <Tooltip content="Extra small" size="xs">
+            <button>XS</button>
+          </Tooltip>
+          <Tooltip content="Small" size="sm">
+            <button>SM</button>
+          </Tooltip>
+          <Tooltip content="Medium (default)" size="md">
+            <button>MD</button>
+          </Tooltip>
+          <Tooltip content="Large" size="lg">
+            <button>LG</button>
+          </Tooltip>
+        </div>
+      </div>
+
+      <div className="demo-section">
+        <h2>Size + Variant Combinations</h2>
+        <div className="tooltip-row">
+          <Tooltip content="XS Light" size="xs" variant="light">
+            <button>XS Light</button>
+          </Tooltip>
+          <Tooltip content="LG Dark" size="lg" variant="dark">
+            <button>LG Dark</button>
+          </Tooltip>
+          <Tooltip
+            content="SM Light bottom-right"
+            size="sm"
+            variant="light"
+            position="bottom-right"
+          >
+            <button>SM Light corner</button>
           </Tooltip>
         </div>
       </div>
