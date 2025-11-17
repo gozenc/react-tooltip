@@ -1,0 +1,94 @@
+/**
+ * Minified CSS class names for reduced bundle size:
+ * .gttw  = tooltip-wrapper
+ * .gttc  = tooltip-content
+ * .gttv  = tooltip-visible
+ * .gtta  = tooltip-arrow
+ * .gttat = tooltip-arrow-top
+ * .gttab = tooltip-arrow-bottom
+ * .gttal = tooltip-arrow-left
+ * .gttar = tooltip-arrow-right
+ * .gttatr = tooltip-arrow-top-right
+ * .gttatl = tooltip-arrow-top-left
+ * .gttabr = tooltip-arrow-bottom-right
+ * .gttabl = tooltip-arrow-bottom-left
+ */
+
+.gttw {
+  position: relative;
+  display: inline-block;
+}
+.gttc {
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  white-space: nowrap;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+.gttc.gttv {
+  opacity: 1;
+}
+.gtta {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+.gttat {
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px 6px 0 6px;
+  border-color: #333 transparent transparent transparent;
+}
+.gttab {
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 6px 6px 6px;
+  border-color: transparent transparent #333 transparent;
+}
+.gttal {
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 6px 0 6px 6px;
+  border-color: transparent transparent transparent #333;
+}
+.gttar {
+  left: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 6px 6px 6px 0;
+  border-color: transparent #333 transparent transparent;
+}
+.gttatl {
+  bottom: -6px;
+  right: 0;
+  border-width: 10px 0 0 12px;
+  border-color: #333 transparent transparent transparent;
+}
+.gttatr {
+  bottom: -6px;
+  left: 0;
+  border-width: 10px 12px 0 0;
+  border-color: #333 transparent transparent transparent;
+}
+.gttabl {
+  top: -6px;
+  right: 0;
+  border-width: 0px 0px 10px 12px;
+  border-color: transparent transparent #333 transparent;
+}
+.gttabr {
+  top: -6px;
+  left: 0;
+  border-width: 0px 12px 10px 0px;
+  border-color: transparent transparent #333 transparent;
+}

@@ -39,7 +39,7 @@ export function App() {
           <Tooltip content="Bottom tooltip" position="bottom">
             <button>Bottom</button>
           </Tooltip>
-          <Tooltip content="Bottom Left tooltip" position="bottom-left">
+          <Tooltip content="BL" position="bottom-left">
             <button>Bottom Left</button>
           </Tooltip>
           <Tooltip content="Left tooltip" position="left">

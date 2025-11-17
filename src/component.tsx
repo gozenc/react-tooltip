@@ -1,4 +1,5 @@
 import { createElement, useState, useRef, useEffect, useCallback } from "react";
+import TOOLTIP_STYLES from "./style.css?inline";
 
 export type TooltipProps = {
   content: string;
@@ -17,19 +18,6 @@ export type TooltipProps = {
   variant?: "dark" | "light";
   size?: "xs" | "sm" | "md" | "lg";
 };
-
-/**
- * Minified CSS class names for reduced bundle size:
- * .gttw  = tooltip-wrapper
- * .gttc  = tooltip-content
- * .gttv  = tooltip-visible
- * .gtta  = tooltip-arrow
- * .gttat = tooltip-arrow-top
- * .gttab = tooltip-arrow-bottom
- * .gttal = tooltip-arrow-left
- * .gttar = tooltip-arrow-right
- */
-const TOOLTIP_STYLES = `.gttw{position:relative;display:inline-block}.gttc{position:absolute;background-color:#333;color:#fff;padding:8px 12px;border-radius:4px;font-size:14px;white-space:nowrap;z-index:1000;pointer-events:none;opacity:0;transition:opacity .2s ease-in-out}.gttc.gttv{opacity:1}.gtta{position:absolute;width:0;height:0;border-style:solid}.gttat{bottom:-6px;left:50%;transform:translateX(-50%);border-width:6px 6px 0 6px;border-color:#333 transparent transparent transparent}.gttab{top:-6px;left:50%;transform:translateX(-50%);border-width:0 6px 6px 6px;border-color:transparent transparent #333 transparent}.gttal{right:-6px;top:50%;transform:translateY(-50%);border-width:6px 0 6px 6px;border-color:transparent transparent transparent #333}.gttar{left:-6px;top:50%;transform:translateY(-50%);border-width:6px 6px 6px 0;border-color:transparent #333 transparent transparent}`;
 
 const STYLE_ID = "gtt-styles";
 
@@ -101,7 +89,11 @@ export function Tooltip(props: React.PropsWithChildren<TooltipProps>) {
   }, []);
 
   const tooltipClasses = `gttc ${isVisible ? "gttv" : ""}`;
-  const arrowClasses = `gtta gtta${tooltipPosition[0]}`;
+  const arrowClasses = `gtta gtta${
+    tooltipPosition.includes("-")
+      ? tooltipPosition.split("-").reduce((acc, curr) => acc + curr[0], "")
+      : tooltipPosition[0]
+  }`;
 
   return createElement(
     "span",
@@ -151,6 +143,22 @@ function calculateTooltipPosition(
     case "right":
       top = (wrapperRect.height - tooltipRect.height) / 2;
       left = wrapperRect.width + offset;
+      break;
+    case "top-left":
+      top = -(tooltipRect.height + offset / 2);
+      left = -(tooltipRect.width + offset / 2);
+      break;
+    case "top-right":
+      top = -(tooltipRect.height + offset / 2);
+      left = wrapperRect.width + offset / 2;
+      break;
+    case "bottom-left":
+      top = wrapperRect.height + offset / 2;
+      left = -(tooltipRect.width + offset / 2);
+      break;
+    case "bottom-right":
+      top = wrapperRect.height + offset / 2;
+      left = wrapperRect.width + offset / 2;
       break;
   }
 
